@@ -63,20 +63,20 @@ public class ProductServiceImpl implements ProductService {
 			throw new ProductNotFoundException(productId);
 		}
 
-		List<ProductShopDetails> productShopDetails = productShopDetailsRepository.findShopDetails(productId);
+		List<ProductShopDetails> productShopDetailList = productShopDetailsRepository.findShopDetails(productId);
 
 		/*
 		 * if (CollectionUtils.isEmpty(productShopDetails)) { throw new
 		 * ShopNotFoundException(productId); }
-		 */
+		 */ 
 		List<Shop> shopDetails= new ArrayList<>();
-		if(!CollectionUtils.isEmpty(productShopDetails)){
+		if(!CollectionUtils.isEmpty(productShopDetailList)){
 
 		List<Shop> shops = new ArrayList<Shop>();
 
-		for (int index = 0; index < productShopDetails.size(); index++) {
+		for (ProductShopDetails productShopDetails:productShopDetailList) {
 			 
-			shops.add(productShopDetails.get(index).getShop());
+			shops.add(productShopDetails.getShop());
 		}
 		 shopDetails = shops.stream()
 				.sorted(Comparator.comparingDouble(Shop::getShopAverageRating).reversed()).collect(Collectors.toList());

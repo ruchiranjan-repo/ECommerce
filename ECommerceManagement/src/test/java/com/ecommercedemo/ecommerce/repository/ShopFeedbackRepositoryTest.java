@@ -50,20 +50,18 @@ public class ShopFeedbackRepositoryTest {
 
 	}
 
-	@Test
-	public void testFindByShop_shopId() {
-		testEntityManger.persist(shop);
-		testEntityManger.persist(user);
-		testEntityManger.persist(shopFeedback);
-		testEntityManger.persist(shopFeedback1);
-
-		List<ShopFeedback> feedbacks = shopFeedbackRepository.findByShop_shopId(1L);
-		
-		assertFalse(CollectionUtils.isEmpty(feedbacks));
-		assertThat(feedbacks.size()).isEqualTo(2);
-
-	}
-	
+	/*
+	 * @Test public void testFindByShop_shopId() { testEntityManger.persist(shop);
+	 * testEntityManger.persist(user); testEntityManger.persist(shopFeedback);
+	 * testEntityManger.persist(shopFeedback1);
+	 * 
+	 * List<ShopFeedback> feedbacks = shopFeedbackRepository.findByShop_shopId(1L);
+	 * 
+	 * assertFalse(CollectionUtils.isEmpty(feedbacks));
+	 * assertThat(feedbacks.size()).isEqualTo(2);
+	 * 
+	 * }
+	 */
 	@Test
 	public void testFindByShop_shopIdNotFound() {
 		testEntityManger.persist(shop);
